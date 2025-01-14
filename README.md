@@ -23,6 +23,7 @@ Dockerized FastAPI wrapper for [Kokoro-82M](https://huggingface.co/hexgrad/Kokor
 
 The service can be accessed through either the API endpoints or the Gradio web interface.
 
+### Using Docker (Recommended)
 1. Install prerequisites:
    - Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) + [Git](https://git-scm.com/downloads)
    - Clone and start the service:
@@ -32,6 +33,28 @@ The service can be accessed through either the API endpoints or the Gradio web i
         docker compose up --build # for GPU
         #docker compose -f docker-compose.cpu.yml up --build # for CPU
         ```
+
+### Running Without Docker
+1. Install system dependencies:
+   ```bash
+   sudo apt-get update && sudo apt-get install -y python3-pip python3-dev espeak-ng libsndfile1
+   ```
+
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Download model files:
+   ```bash
+   git clone https://huggingface.co/hexgrad/Kokoro-82M models
+   ```
+
+4. Run the service:
+   ```bash
+   PYTHONPATH=$PYTHONPATH:$(pwd) uvicorn api.src.main:app --port 50888
+   ```
+
 2. Run locally as an OpenAI-Compatible Speech Endpoint
     ```python
     from openai import OpenAI
