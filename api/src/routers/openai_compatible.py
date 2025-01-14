@@ -7,10 +7,12 @@ from fastapi.responses import StreamingResponse
 from ..services.audio import AudioService
 from ..structures.schemas import OpenAISpeechRequest
 from ..services.tts_service import TTSService
+from ..core.security import require_api_key
 
 router = APIRouter(
     tags=["OpenAI Compatible TTS"],
     responses={404: {"description": "Not found"}},
+    dependencies=[require_api_key],
 )
 
 

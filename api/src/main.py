@@ -9,6 +9,7 @@ import uvicorn
 from loguru import logger
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.openapi.models import SecurityScheme
 
 from .core.config import settings
 from .services.tts_model import TTSModel
@@ -87,6 +88,21 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Add Bearer Auth security scheme
+app.openapi_components = {
+    "securitySchemes": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization",
+            "description": "Enter your API key with the prefix 'Bearer'. Example: 'Bearer your-api-key-here'"
+        }
+    }
+}
+
+# Apply security globally
+app.openapi_security = [{"ApiKeyAuth": []}]
 
 # Include routers
 app.include_router(openai_router, prefix="/v1")

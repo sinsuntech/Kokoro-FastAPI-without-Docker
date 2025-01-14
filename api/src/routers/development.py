@@ -13,8 +13,12 @@ from ..structures.text_schemas import (
     GenerateFromPhonemesRequest,
 )
 from ..services.text_processing import tokenize, phonemize
+from ..core.security import require_api_key
 
-router = APIRouter(tags=["text processing"])
+router = APIRouter(
+    tags=["text processing"],
+    dependencies=[require_api_key],
+)
 
 
 def get_tts_service() -> TTSService:
@@ -24,12 +28,13 @@ def get_tts_service() -> TTSService:
 
 @router.post("/text/phonemize", response_model=PhonemeResponse, tags=["deprecated"])
 @router.post("/dev/phonemize", response_model=PhonemeResponse)
-async def phonemize_text(request: PhonemeRequest) -> PhonemeResponse:
+async def phonemize_text(
+    request: PhonemeRequest,
+) -> PhonemeResponse:
     """Convert text to phonemes and tokens
 
     Args:
         request: Request containing text and language
-        tts_service: Injected TTSService instance
 
     Returns:
         Phonemes and token IDs

@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     api_version: str = "1.0.0"
     host: str = "0.0.0.0"
     port: int = 8880
+    api_key: str = ""  # API key for authentication, should be set in .env file
+    require_api_key: bool = True  # Whether to require API key authentication
 
     # TTS Settings
     output_dir: str = "output"

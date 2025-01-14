@@ -50,18 +50,26 @@ The service can be accessed through either the API endpoints or the Gradio web i
    git clone https://huggingface.co/hexgrad/Kokoro-82M models
    ```
 
-4. Run the service:
+4. Configure API key:
+   Create a `.env` file in the root directory:
+   ```bash
+   # API Settings
+   api_key=your_api_key_here  # Replace with your desired API key
+   require_api_key=true
+   ```
+
+5. Run the service:
    ```bash
    PYTHONPATH=$PYTHONPATH:$(pwd) uvicorn api.src.main:app --port 50888
    ```
 
-2. Run locally as an OpenAI-Compatible Speech Endpoint
+6. Run locally as an OpenAI-Compatible Speech Endpoint:
     ```python
     from openai import OpenAI
     client = OpenAI(
         base_url="http://localhost:8880/v1",
-        api_key="not-needed"
-        )
+        api_key="your_api_key_here"  # Use the same API key as configured in .env
+    )
 
     response = client.audio.speech.create(
         model="kokoro", 
@@ -98,13 +106,22 @@ Or Via Requests:
 ```python
 import requests
 
+# Set up headers with API key
+headers = {
+    "Authorization": f"Bearer your_api_key_here"
+}
 
-response = requests.get("http://localhost:8880/v1/audio/voices")
+# Get available voices
+response = requests.get(
+    "http://localhost:8880/v1/audio/voices",
+    headers=headers
+)
 voices = response.json()["voices"]
 
 # Generate audio
 response = requests.post(
     "http://localhost:8880/v1/audio/speech",
+    headers=headers,
     json={
         "model": "kokoro",  # Not used but required for compatibility
         "input": "Hello world!",
