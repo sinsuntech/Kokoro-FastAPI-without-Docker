@@ -68,7 +68,7 @@ The service can be accessed through either the API endpoints or the Gradio web i
     from openai import OpenAI
     client = OpenAI(
         base_url="http://localhost:8880/v1",
-        api_key="your_api_key_here"  # Use the same API key as configured in .env
+        api_key="your_api_key_here"  # Use the same API key as configured in .env (or "" if not required)
     )
 
     response = client.audio.speech.create(
@@ -92,7 +92,10 @@ The service can be accessed through either the API endpoints or the Gradio web i
 ```python
 # Using OpenAI's Python library
 from openai import OpenAI
-client = OpenAI(base_url="http://localhost:8880/v1", api_key="not-needed")
+client = OpenAI(
+    base_url="http://localhost:8880/v1",
+    api_key="your_api_key_here"  # Must match the api_key in your .env file or "" if not required
+)
 response = client.audio.speech.create(
     model="kokoro",  # Not used but required for compatibility, also accepts library defaults
     voice="af_bella+af_sky",
@@ -108,7 +111,7 @@ import requests
 
 # Set up headers with API key
 headers = {
-    "Authorization": f"Bearer your_api_key_here"
+    "Authorization": f"Bearer your_api_key_here"  # Must match the api_key in your .env file
 }
 
 # Get available voices
@@ -216,7 +219,9 @@ Currently, voices created via the API are accessible here, but voice combination
 # OpenAI-compatible streaming
 from openai import OpenAI
 client = OpenAI(
-    base_url="http://localhost:8880", api_key="not-needed")
+    base_url="http://localhost:8880",
+    api_key="your_api_key_here"  # Must match the api_key in your .env file
+)
 
 # Stream to file
 with client.audio.speech.with_streaming_response.create(

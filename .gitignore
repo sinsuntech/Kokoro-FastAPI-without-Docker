@@ -51,5 +51,7 @@ docker-compose*
 *.wav
 *.tar*
 
-# 环境变量
+# Environment variables
 .env
+.env.*
+!.env.example
