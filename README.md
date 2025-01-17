@@ -75,6 +75,7 @@ The service can be accessed through either the API endpoints or the Gradio web i
    PYTHONPATH=$PYTHONPATH:$(pwd) uvicorn api.src.main:app --port 8880
    ```
 
+
 7. Run locally as an OpenAI-Compatible Speech Endpoint:
     ```python
     from openai import OpenAI
