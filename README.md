@@ -55,13 +55,18 @@ The service can be accessed through either the API endpoints or the Gradio web i
    ```bash
    git clone https://www.modelscope.cn/AI-ModelScope/Kokoro-82M.git models   
    ```
+   
 3. Install Python dependencies:
    ```bash
    pip install -r requirements.txt
    pip install torch
    git lfs install
    ```
-   
+4.View models files:
+   ```bash
+  cd models
+  ls -lh
+   ```
 5. Configure API key:
    Create a `.env` file in the root directory:
    ```bash
