@@ -55,12 +55,14 @@ The service can be accessed through either the API endpoints or the Gradio web i
    git lfs install
    
    git clone https://huggingface.co/hexgrad/Kokoro-82M models
-   or(china)
-   git clone https://www.modelscope.cn/AI-ModelScope/Kokoro-82M.git models
+    ```
+   China Recommand
    
+   ```bash
+   git clone https://www.modelscope.cn/AI-ModelScope/Kokoro-82M.git models   
    ```
 
-4. Configure API key:
+5. Configure API key:
    Create a `.env` file in the root directory:
    ```bash
    # API Settings
@@ -68,12 +70,12 @@ The service can be accessed through either the API endpoints or the Gradio web i
    require_api_key=true
    ```
 
-5. Run the service:
+6. Run the service:
    ```bash
    PYTHONPATH=$PYTHONPATH:$(pwd) uvicorn api.src.main:app --port 50888
    ```
 
-6. Run locally as an OpenAI-Compatible Speech Endpoint:
+7. Run locally as an OpenAI-Compatible Speech Endpoint:
     ```python
     from openai import OpenAI
     client = OpenAI(
