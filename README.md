@@ -61,6 +61,8 @@ The service can be accessed through either the API endpoints or the Gradio web i
    pip install -r requirements.txt
    pip install torch
    git lfs install
+   git lfs version
+
    ```
 4.View models files:
    ```bash
