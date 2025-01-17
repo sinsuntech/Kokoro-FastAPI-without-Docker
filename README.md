@@ -34,11 +34,12 @@ The service can be accessed through either the API endpoints or the Gradio web i
         #docker compose -f docker-compose.cpu.yml up --build # for CPU
         ```
 
-### Running Without Docker
+### Running Without Docker By ubuntu
 1. Install system dependencies:
    ```bash
    sudo apt-get update && sudo apt-get install -y python3-pip python3-dev espeak-ng libsndfile1
    sudo apt install uvicorn
+   sudo apt-get install git-lfs
    ```
 
 2. Install Python dependencies:
@@ -51,7 +52,12 @@ The service can be accessed through either the API endpoints or the Gradio web i
    ```bash
    git clone https://github.com/sinsuntech/Kokoro-FastAPI-without-Docker.git
    cd Kokoro-FastAPI-without-Docker
+   git lfs install
+   
    git clone https://huggingface.co/hexgrad/Kokoro-82M models
+   or(china)
+   git clone https://www.modelscope.cn/AI-ModelScope/Kokoro-82M.git models
+   
    ```
 
 4. Configure API key:
