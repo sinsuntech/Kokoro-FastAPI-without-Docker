@@ -42,17 +42,11 @@ The service can be accessed through either the API endpoints or the Gradio web i
    sudo apt-get install git-lfs
    ```
 
-2. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   pip install torch
-   ```
-
-3. Download resource and model files:
+2. Download resource and model files:
    ```bash
    git clone https://github.com/sinsuntech/Kokoro-FastAPI-without-Docker.git
    cd Kokoro-FastAPI-without-Docker
-   git lfs install
+
    
    git clone https://huggingface.co/hexgrad/Kokoro-82M models
     ```
@@ -61,7 +55,13 @@ The service can be accessed through either the API endpoints or the Gradio web i
    ```bash
    git clone https://www.modelscope.cn/AI-ModelScope/Kokoro-82M.git models   
    ```
-
+3. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   pip install torch
+      git lfs install
+   ```
+   
 5. Configure API key:
    Create a `.env` file in the root directory:
    ```bash
