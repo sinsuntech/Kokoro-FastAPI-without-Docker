@@ -59,7 +59,7 @@ The service can be accessed through either the API endpoints or the Gradio web i
    ```bash
    pip install -r requirements.txt
    pip install torch
-      git lfs install
+   git lfs install
    ```
    
 5. Configure API key:
